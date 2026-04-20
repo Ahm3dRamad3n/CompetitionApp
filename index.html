@@ -358,7 +358,8 @@ window.givePoints = function(pts) {
             // لو الإجابة صح (+10): اقفل الزرار تماماً لحد السؤال الجاي
             update(roomRef, { 
         currentQuestion: "✅ انتهى السؤال بإجابة صحيحة! جاري تجهيز السؤال القادم... 🏆",
-        buzzerLocked: true 
+        buzzerLocked: true ,
+pressedBy: ""
     });
         } else {
             // لو غلط (-5) أو تصفير: افتح الزرار للباقي
