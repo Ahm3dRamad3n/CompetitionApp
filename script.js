@@ -146,22 +146,34 @@
         }
 
         window.handleFileUpload = function(input) {
-            const file = input.files[0];
-            if (file) {
-                if (file.size > 2 * 1024 * 1024) { // تنبيه لو الصورة أكبر من 2 ميجا
-                    alert("الصورة كبيرة جداً! اختر صورة أقل من 2 ميجابايت.");
-                    return;
-                }
-                document.getElementById('sendBtn').disabled = true;
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    // نضع النتيجة (الرابط الطويل) في خانة الـ URL
-                    document.getElementById('questionImage').value = e.target.result;
-                    document.getElementById('sendBtn').disabled = false;
-                };
-                reader.readAsDataURL(file);
-            }
+    const file = input.files[0];
+    const sendBtn = document.getElementById('sendBtn'); 
+
+    if (file) {
+        sendBtn.disabled = true;
+        sendBtn.innerText = "جاري تجهيز الصورة... ⏳";
+        sendBtn.classList.add('opacity-50', 'cursor-not-allowed');
+
+        if (file.size > 2 * 1024 * 1024) {
+            alert("الصورة كبيرة جداً! اختر صورة أقل من 2 ميجابايت.");
+
+            sendBtn.disabled = false;
+            sendBtn.innerText = "إرسال السؤال 🚀";
+            sendBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+            return;
+        }
+
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            document.getElementById('questionImage').value = e.target.result;
+            
+            sendBtn.disabled = false;
+            sendBtn.innerText = "إرسال السؤال 🚀";
+            sendBtn.classList.remove('opacity-50', 'cursor-not-allowed');
         };
+        reader.readAsDataURL(file);
+    }
+};
 
         window.sendQuestion = function() {
 
