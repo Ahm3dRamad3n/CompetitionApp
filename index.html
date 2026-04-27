@@ -63,13 +63,12 @@
                         <input type="text" id="questionImage" placeholder="ضع رابط الصورة هنا..." class="flex-1 bg-slate-700 rounded-lg p-2 text-sm text-right">
                         
                         <span class="text-slate-500 text-xs font-bold">أو</span>
-
                         <input type="file" id="fileInput" accept="image/*" class="hidden" onchange="handleFileUpload(this)">
                         <button onclick="document.getElementById('fileInput').click()" class="bg-slate-600 hover:bg-slate-500 px-3 py-2 rounded-lg text-xs flex items-center gap-1 whitespace-nowrap">
                             📁 رفع صورة
                         </button>
                     </div>
-                    <button onclick="sendQuestion()" class="w-full bg-blue-600 hover:bg-blue-700 py-2 rounded-lg font-bold text-sm">إرسال السؤال</button>
+                    <button id="sendBtn" onclick="sendQuestion()" class="w-full bg-blue-600 hover:bg-blue-700 py-2 rounded-lg font-bold text-sm">إرسال السؤال</button>
                 </div>
                 <div id="judge-actions" class="hidden flex justify-around p-4 bg-slate-900 rounded-xl">
                     <span id="whoPressed" class="text-yellow-400"></span>

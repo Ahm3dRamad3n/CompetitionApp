@@ -152,11 +152,12 @@
                     alert("الصورة كبيرة جداً! اختر صورة أقل من 2 ميجابايت.");
                     return;
                 }
+                document.getElementById('sendBtn').disabled = true;
                 const reader = new FileReader();
                 reader.onload = function(e) {
                     // نضع النتيجة (الرابط الطويل) في خانة الـ URL
                     document.getElementById('questionImage').value = e.target.result;
-                    alert("✅ تم تجهيز الصورة للرفع!");
+                    document.getElementById('sendBtn').disabled = false;
                 };
                 reader.readAsDataURL(file);
             }
